@@ -1,5 +1,7 @@
 package com.datastructures;
 
+import java.util.Arrays;
+
 public class DynamicArr<T> {
 
 	Object[] objs;
@@ -19,13 +21,16 @@ public class DynamicArr<T> {
 	}
 	
 	public void put(Object obj) {
-		checkSize(numOfElements);
+		checkSize(numOfElements+1);
+		objs[numOfElements]=obj;
+		numOfElements++;
 	}
 	
 	public void checkSize(int numOfElements) {
 		int capacity = getSize();
-		if(numOfElements>capacity) {
-			
+		if(numOfElements==capacity) {
+			int newCap = capacity * 2;
+			objs = Arrays.copyOf(objs, newCap);
 		}
 	}
 
